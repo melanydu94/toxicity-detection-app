@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npm install axios@0.24.0
+
 RUN npm i apexcharts
 
 COPY . .
