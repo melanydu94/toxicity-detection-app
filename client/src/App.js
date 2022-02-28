@@ -6,19 +6,7 @@ import SentenceForm from './SentenceForm';
 
 function App() {
   useEffect(() => {
-    fetch("/model",
-      {
-        mode: 'no-cors',
-        credentials: 'include',
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
-      }
-    }
-  ).then(response =>
+    fetch("/model").then(response =>
       console.log(response)
       ).then(jsonData => {
         console.log(jsonData)
