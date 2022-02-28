@@ -8,25 +8,30 @@ export default class SentenceForm extends React.Component {
 
     this.state = {
       my_sentence: '',
-      series: [15, 15, 15, 15, 15, 15],
+      series: [{
+        data: [15, 15, 15, 15, 15, 15]
+      }],
       options: {
         chart: {
-          type: 'donut',
+          type: 'bar',
+          height: 350
         },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            }
+        plotOptions: {
+          bar: {
+            borderRadius: 4,
+            horizontal: true,
           }
-        }],
+        },
+        dataLabels: {
+          enabled: false
+        },
+        xaxis: {
+          categories: ["toxicity", "severe_toxicity", "obscene", "threat", "insult", "identity_attack"]
+        },
         legend: {
           position: 'bottom',
-          colors: '#ffffff',
-          useSeriesColors: false
+          useSeriesColors: true
         },
-        labels: ["toxicity", "severe_toxicity", "obscene", "threat", "insult", "identity_attack"],
         colors: ["#447b40", "#cc7870", "#e74ce4","#447b40", "#cc7870", "#e74ce4"]
       },
     
@@ -49,7 +54,7 @@ export default class SentenceForm extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
-        this.setState({ series: [res.data.toxicity, res.data.severe_toxicity, res.data.obscene, res.data.threat, res.data.insult, res.data.identity_attack] });
+        this.setState({ series: [{ data: [res.data.toxicity, res.data.severe_toxicity, res.data.obscene, res.data.threat, res.data.insult, res.data.identity_attack ] }] });
       })
   }
 
@@ -66,7 +71,7 @@ export default class SentenceForm extends React.Component {
             <button type="submit">Predict Sentiment</button>
           </form>
             <div id="chart">
-              <Chart options={this.state.options} series={this.state.series} type="donut" width="600"/>
+              <Chart options={this.state.options} series={this.state.series} type="bar" width="600"/>
             </div>
         </div>
       </div>
