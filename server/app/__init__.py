@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect
-from flask_cors import cross_origin, CORS
+from flask_cors import cross_origin
 from . import creation_model
 import json
 
@@ -9,16 +9,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 app.testing = True
 HOST = "127.0.0.1"
 PORT = 5000
-
-config = {
-  'ORIGINS': [
-    'http://localhost:80',  # React
-    'http://127.0.0.1:80',  # React
-  ]
-}
-
-
-CORS(app, resources={ r'/*': {'origins': config['ORIGINS']}}, supports_credentials=True)
 
 
 @app.route('/')
