@@ -18,13 +18,13 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <div>
-          <h2>Sentiment analysis of the sentence</h2>
+          <h2>Toxicity detection of the sentence</h2>
           <SentenceForm/>
         </div>
       </header>
       <footer>
-        <p>Author: Melany Ebrahim, Louis Minart, Dany Sonethavy</p>
-        <p>The application is a sentiment analysis application, which, given a piece of text, should be able to reply with its sentiment as being positive, negative, or neutral.</p>
+        <p>Author: Melany Ebrahim, Dany Sonethavy</p>
+        <p>The application is a toxicity detection application, which, given a piece of text, should be able to detect different types of of toxicity like threats, obscenity, insults, and identity-based hate.</p>
       </footer>
     </div>
   );
