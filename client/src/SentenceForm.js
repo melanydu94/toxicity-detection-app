@@ -9,12 +9,14 @@ export default class SentenceForm extends React.Component {
     this.state = {
       my_sentence: '',
       series: [{
-        data: [15, 15, 15, 15, 15, 15]
+        data: [0, 0, 0, 0, 0, 0]
       }],
       options: {
         chart: {
           type: 'bar',
-          height: 350
+          height: 350,
+          foreColor: '#fff',
+          fontSize: "30px"
         },
         plotOptions: {
           bar: {
@@ -28,11 +30,10 @@ export default class SentenceForm extends React.Component {
         xaxis: {
           categories: ["toxicity", "severe_toxicity", "obscene", "threat", "insult", "identity_attack"]
         },
-        legend: {
-          position: 'bottom',
-          useSeriesColors: true
-        },
-        colors: ["#447b40", "#cc7870", "#e74ce4","#447b40", "#cc7870", "#e74ce4"]
+        colors: ['#C70039', '#17202A'],
+        tooltip: {
+          theme: "dark"
+        }
       },
     
     

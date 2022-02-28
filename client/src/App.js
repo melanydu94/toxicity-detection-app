@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './petit_dauphin.gif'
 import { useEffect } from 'react';
 import './App.css';
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} alt="logo" width="300"/>
         <div>
           <h2>Toxicity detection of the sentence</h2>
           <SentenceForm/>
