@@ -19,4 +19,4 @@ def sentiment_scores(sentence):
     # print(pd.DataFrame(results, index=sentence).round(5).to_json(orient="index"))
     return pd.DataFrame(results, index=sentence).round(5).to_dict('index')
     
-print(sentiment_scores(["I HATE YOU!!!!!!!", "I LOVE YOU !!!!"]))
+# print(sentiment_scores(["I HATE YOU!!!!!!!", "I LOVE YOU !!!!"]))
