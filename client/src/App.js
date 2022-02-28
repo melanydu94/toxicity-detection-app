@@ -6,7 +6,14 @@ import SentenceForm from './SentenceForm';
 
 function App() {
   useEffect(() => {
-    fetch("/model").then(response =>
+    fetch("/model",
+      {
+        mode: 'no-cors',
+        credentials: 'include',
+        method: 'POST',
+        headers: headers
+    }
+  ).then(response =>
       console.log(response)
       ).then(jsonData => {
         console.log(jsonData)
