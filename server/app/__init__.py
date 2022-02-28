@@ -20,8 +20,8 @@ def index():
 @cross_origin(origin='127.0.0.1', headers=['Content- Type', 'Authorization'])
 def model():
     print("Enter a sentence to analyse :")
-    sentence = request.json['sentence']
-    result = creation_model.sentiment_scores(sentence)
+    sentence = request.form['sentence']
+    result = creation_model.sentiment_scores([sentence])
     json_result = json.dumps(result)
     return json_result, 200
 
