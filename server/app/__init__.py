@@ -21,7 +21,7 @@ def index():
 def model():
     print("Enter a sentence to analyse :")
     sentence = request.json['sentence']
-    result = creation_model.sentiment_scores(sentence)
+    result = creation_model.sentiment_scores([sentence])
     json_result = json.dumps(result)
     return json_result, 200
 

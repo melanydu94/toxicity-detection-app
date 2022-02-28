@@ -17,6 +17,6 @@ def response_dict(toxic_score, sev_toxic_score, obscene_score, threat_score, ins
 def sentiment_scores(sentence):
     results = Detoxify('original').predict(sentence)
     # print(pd.DataFrame(results, index=sentence).round(5).to_json(orient="index"))
-    return pd.DataFrame(results, index=sentence).round(5).to_json(orient="index")
+    return pd.DataFrame(results, index=sentence).round(5).to_dict('index')
     
-sentiment_scores(["I HATE YOU!!!!!!!", "I LOVE YOU !!!!"])
+print(sentiment_scores(["I HATE YOU!!!!!!!", "I LOVE YOU !!!!"]))
