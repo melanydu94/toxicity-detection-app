@@ -53,6 +53,7 @@ export default class SentenceForm extends React.Component {
 
     axios({
       method: 'post',
+      data:form,
       url: `http://localhost:5000/model`,
       headers: {
         "Content-Type": "application/json",
