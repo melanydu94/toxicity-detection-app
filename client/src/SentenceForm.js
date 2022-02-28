@@ -51,7 +51,7 @@ export default class SentenceForm extends React.Component {
       sentence: this.state.my_sentence
     };
 
-    axios.post('http://127.0.0.1:5000/model', form , {
+    axios.post('http://localhost:5000/model', form , {
         withCredentials: true,
           // put the rest of your config here
       })
