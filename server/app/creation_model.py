@@ -1,4 +1,5 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from detoxify import Detoxify
 
 def response_dict(sentiment, pos_score, neu_score, neg_score):
     my_dict = {
