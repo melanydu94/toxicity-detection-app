@@ -53,6 +53,7 @@ export default class SentenceForm extends React.Component {
 
 
     axios.post('http://localhost:5000/model', form , {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
