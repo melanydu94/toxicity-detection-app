@@ -1,14 +1,43 @@
 import React from 'react';
 import axios from 'axios';
-import GaugeChart from 'react-advanced-gauge-chart'
+import Chart from 'react-apexcharts'
 
 export default class SentenceForm extends React.Component {
-  state = {
-    my_sentence: '',
-    my_sentiment: 'Undefined',
-    my_pos_score: '0.0',
-    my_neu_score: '0.0',
-    my_neg_score: '0.0',
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      my_sentence: '',
+      series: [{
+        data: [0, 0, 0, 0, 0, 0]
+      }],
+      options: {
+        chart: {
+          type: 'bar',
+          height: 350,
+          foreColor: '#fff',
+          fontSize: "30px"
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 4,
+            horizontal: true,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        xaxis: {
+          categories: ["toxicity", "severe_toxicity", "obscene", "threat", "insult", "identity_attack"]
+        },
+        colors: ['#C70039', '#17202A'],
+        tooltip: {
+          theme: "dark"
+        }
+      },
+    
+    
+    };
   }
 
   handleChange = event => {
@@ -26,54 +55,26 @@ export default class SentenceForm extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
-        this.setState({ my_pos_score: res.data.Rating_Positive });
-        this.setState({ my_neu_score: res.data.Rating_Neutral });
-        this.setState({ my_neg_score: res.data.Rating_Negative });
-        this.setState({ my_sentiment: res.data.Sentiment });
+        this.setState({ series: [{ data: [res.data.toxicity, res.data.severe_toxicity, res.data.obscene, res.data.threat, res.data.insult, res.data.identity_attack ] }] });
       })
-
-    
   }
 
   render() {
     return (
       <div>
           <div>
-                <GaugeChart id="gauge-chart1" 
-                    nrOfLevels={15} 
-                    percent={this.state.my_neg_score} 
-                    needleColor="#345243"
-                    style={{width: "300px", display:'inline-block'}}
-                    colors={["#FF0000"]}
-                    className="row"
-                />
-                <GaugeChart id="gauge-chart2" 
-                    nrOfLevels={15} 
-                    percent={this.state.my_neu_score} 
-                    needleColor="#345243"
-                    style={{width: "300px", display:'inline-block'}}
-                    colors={["#FFFFFF"]}
-                    className="row"
-                />
-                <GaugeChart id="gauge-chart3" 
-                    nrOfLevels={15} 
-                    percent={this.state.my_pos_score} 
-                    needleColor="#345243"
-                    style={{width: "300px", display:'inline-block'}}
-                    colors={["#00FF00"]}
-                    className="row"
-                />
+            <form onSubmit={this.handleSubmit}>
+            <label>
+              Enter your sentence : &nbsp;
+              <input type="text" name="sentence" onChange={this.handleChange} />
+            </label>
+            &nbsp;
+            <button type="submit">Predict Sentiment</button>
+          </form>
+            <div id="chart">
+              <Chart options={this.state.options} series={this.state.series} type="bar" width="600"/>
+            </div>
         </div>
-        <h2 id="sentiment">Overall : {this.state.my_sentiment}</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Enter your sentence : &nbsp;
-            <input type="text" name="sentence" onChange={this.handleChange} />
-          </label>
-          <br>
-          </br>
-          <button type="submit">Predict Sentiment</button>
-        </form>
       </div>
     )
   }
