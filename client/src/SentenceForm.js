@@ -51,24 +51,22 @@ export default class SentenceForm extends React.Component {
       sentence: this.state.my_sentence
     };
 
-    const cors = require('cors');
 
-    //app.use(cors());
-
-    app.use(cors({
-      origin: 'http://localhost:5000/',
-      credentials: true
-    }));
-
-    axios.post('http://localhost:5000/model', form , {
-        withCredentials: true,
-          // put the rest of your config here
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-        this.setState({ series: [{ data: [res.data.toxicity, res.data.severe_toxicity, res.data.obscene, res.data.threat, res.data.insult, res.data.identity_attack ] }] });
-      })
+    axios({
+      method: 'post',
+      url: `127.0.0.1:5000/model`,
+      headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
+      },
+      withCredentials: true // True otherwise I receive another error
+    }).then(res => {
+      console.log(res);
+      console.log(res.data);
+      this.setState({ series: [{ data: [res.data.toxicity, res.data.severe_toxicity, res.data.obscene, res.data.threat, res.data.insult, res.data.identity_attack ] }] });
+    })
   }
 
   render() {
