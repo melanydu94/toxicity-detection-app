@@ -11,7 +11,12 @@ function App() {
         mode: 'no-cors',
         credentials: 'include',
         method: 'POST',
-        headers: headers
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
+      }
     }
   ).then(response =>
       console.log(response)
