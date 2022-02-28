@@ -17,7 +17,7 @@ def index():
 
 
 @app.route('/model', methods=['POST'])
-@cross_origin(origin='127.0.0.1', headers=['Content- Type', 'Authorization'])
+@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def model():
     print("Enter a sentence to analyse :")
     sentence = request.json['sentence']
