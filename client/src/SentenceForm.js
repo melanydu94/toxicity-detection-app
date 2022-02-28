@@ -51,7 +51,16 @@ export default class SentenceForm extends React.Component {
       sentence: this.state.my_sentence
     };
 
-    axios.post('Access-Control-Allow-Origin', 'http://localhost:5000/model', form , {
+    const cors = require('cors');
+
+    //app.use(cors());
+
+    app.use(cors({
+      origin: 'http://localhost:5000/',
+      credentials: true
+    }));
+
+    axios.post('http://localhost:5000/model', form , {
         withCredentials: true,
           // put the rest of your config here
       })
