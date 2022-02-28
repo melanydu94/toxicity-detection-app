@@ -1,0 +1,20 @@
+version: "3.2"
+
+services:
+  api:
+    restart: always
+    container_name: flask-project
+    build: 
+      context: ./server
+    ports:
+      - "5000:5000"
+
+  react:
+    restart: always
+    container_name: react-project
+    build:
+      context: ./client/
+    depends_on:
+      - api
+    ports:
+      - "80:80"

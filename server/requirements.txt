@@ -1,0 +1,5 @@
+vaderSentiment~=3.3.2
+flask~=1.1.2
+uWSGI==2.0.19.1
+flask_cors
+pytest~=6.2.4
