@@ -1,6 +1,7 @@
 flask~=1.1.2
-uWSGI==2.0.19.1
+uWSGI
 flask_cors
 pytest~=6.2.4
 detoxify
 pandas
+torch
