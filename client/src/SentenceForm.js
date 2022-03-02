@@ -70,7 +70,7 @@ export default class SentenceForm extends React.Component {
               <input type="text" name="sentence" onChange={this.handleChange} />
             </label>
             &nbsp;
-            <button type="submit">Predict Sentiment</button>
+            <button type="submit">Predict Toxicity</button>
           </form>
             <div id="chart">
               <Chart options={this.state.options} series={this.state.series} type="bar" width="600"/>
