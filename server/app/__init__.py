@@ -1,9 +1,10 @@
 from flask import Flask, request, redirect
-from flask_cors import cross_origin
+from flask_cors import CORS, cross_origin
 from . import creation_model
 import json
 
 app = Flask(__name__)
+cors = CORS(app)
 app.config['TESTING'] = True
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.testing = True
@@ -12,12 +13,13 @@ PORT = 5000
 
 
 @app.route('/')
+@cross_origin()
 def index():
     return ""
 
 
 @app.route('/model', methods=['POST'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+@cross_origin()
 def model():
     print("Enter a sentence to analyse :")
     sentence = request.json['sentence']
