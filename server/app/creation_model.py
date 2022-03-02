@@ -4,7 +4,7 @@ from torch import set_rng_state
 
 
 def sentiment_scores(sentence):
-    results = Detoxify('original').predict(sentence)
+    results = Detoxify.load_from_checkpoint("../model/toxic_original-c1212f89.ckpt").predict(sentence)
     # print(pd.DataFrame(results, index=sentence).round(5).to_json(orient="index"))
     df = pd.DataFrame(results, index=sentence).round(5)
     my_dict = df.rename_axis('sentence').reset_index().to_dict('index')
