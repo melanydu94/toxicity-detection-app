@@ -8,7 +8,7 @@ RUN pip3 install -r requirements.txt
 
 ADD . /app
 
-COPY toxicity-detection-app/ ./toxicity-detection-app/
+COPY . /app
 
 CMD ["uwsgi",  "--ini", "uwsgi.ini"]
 
