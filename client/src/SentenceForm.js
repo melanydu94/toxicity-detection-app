@@ -51,12 +51,13 @@ export default class SentenceForm extends React.Component {
       sentence: this.state.my_sentence
     };
 
-    axios.post(`http://127.0.0.1:5000/model`, form )
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-        this.setState({ series: [{ data: [res.data.toxicity, res.data.severe_toxicity, res.data.obscene, res.data.threat, res.data.insult, res.data.identity_attack ] }] });
-      })
+    axios.post("http://127.0.0.1:5000/model", form, { "content-type": "application/json" }).then(res => {
+      console.log(res);
+      console.log(res.data);
+      this.setState({ series: [{ data: [res.data.toxicity, res.data.severe_toxicity, res.data.obscene, res.data.threat, res.data.insult, res.data.identity_attack ] }] });
+    })
+
+
   }
 
   render() {

@@ -3,8 +3,6 @@ import pandas as pd
 from torch import set_rng_state
 
 
-
-
 def sentiment_scores(sentence):
     results = Detoxify('original').predict(sentence)
     # print(pd.DataFrame(results, index=sentence).round(5).to_json(orient="index"))
