@@ -76,10 +76,11 @@ services:
   alertmanager:
     image: prom/alertmanager:latest
     ports:
-      - '9093:9093'
+      - '9095:9095'
     volumes:
       - ./alertmanager/:/etc/alertmanager/
     restart: always
     command:
-      - '-config.file=/etc/alertmanager/alertmanager.yml'
-      - '-storage.path=/alertmanager'
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--storage.path=/alertmanager'
+      - '--web.listen-address=alertmanager:9095'
