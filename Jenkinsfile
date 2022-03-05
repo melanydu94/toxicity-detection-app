@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh '''
                 export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin/
-                sudo service docker start && docker-compose build
+                docker-compose build
                 '''
             }
 
