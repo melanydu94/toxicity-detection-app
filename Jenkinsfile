@@ -7,7 +7,6 @@ pipeline {
             
             steps {
                 sh '''
-                export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin/
                 docker-compose build
                 '''
             }
@@ -18,7 +17,6 @@ pipeline {
             
             steps {
                 sh '''
-                export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin/
                 python -m pytest test/test_model.py
                 '''
             }
@@ -29,7 +27,6 @@ pipeline {
             
             steps {
                 sh '''
-                export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin/
                 docker-compose up
                 '''
             }
