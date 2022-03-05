@@ -8,8 +8,7 @@ pipeline {
             steps {
                 sh '''
                 export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin/
-                export DOCKER_HOST=127.0.0.1
-                docker-compose build
+                sudo service docker start && docker-compose build
                 '''
             }
 
