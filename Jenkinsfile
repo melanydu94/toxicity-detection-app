@@ -7,6 +7,7 @@ pipeline {
             
             steps {
                 sh '''
+                usermod -a -G docker $USER
                 docker-compose build
                 '''
             }
