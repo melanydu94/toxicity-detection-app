@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh '''
                 export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin/
-                sudo docker-compose build
+                docker-compose build
                 '''
             }
 
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                 export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin/
-                sudo docker-compose up
+                docker-compose up
                 '''
             }
 
