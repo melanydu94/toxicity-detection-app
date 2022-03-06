@@ -7,9 +7,7 @@ pipeline {
             
             steps {
                 sh '''
-                pip3 --install --upgrade pip
-                pip3 install numpy pytest
-                python3 -m pytest test/test_model.py
+                python -m pytest test/test_model.py
                 '''
             }
 
