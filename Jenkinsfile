@@ -7,6 +7,7 @@ pipeline {
             
             steps {
                 sh '''
+                where python
                 python3 -m pytest test/test_model.py
                 '''
             }
