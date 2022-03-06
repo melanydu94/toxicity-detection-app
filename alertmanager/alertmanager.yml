@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: 'gmail-notifications'
+
+receivers:
+- name: 'gmail-notifications'
+  email_configs:
+  - to: danysone.project@gmail.com
+    from: danysone.project@gmail.com
+    smarthost: smtp.gmail.com:587
+    auth_username: danysone.project@gmail.com
+    auth_identity: danysone.project@gmail.com
+    auth_password: vuxkscmrmrkxyqjs
+    send_resolved: true

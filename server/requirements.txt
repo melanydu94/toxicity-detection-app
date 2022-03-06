@@ -5,3 +5,4 @@ pytest
 detoxify
 pandas
 torch
+prometheus_client
