@@ -6,7 +6,7 @@ pipeline {
         stage('Clear Docker Images') {
             steps {
                 sh '''
-                docker rm -vf $(docker ps -aq)
+                docker rmi -f $(docker images -q)
                 '''
             }
         }
