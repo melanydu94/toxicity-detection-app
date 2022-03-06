@@ -18,6 +18,7 @@ pipeline {
             
             steps {
                 sh '''
+                source /path/to/ENV/bin/activate
                 python -m pytest test/test_model.py
                 '''
             }
