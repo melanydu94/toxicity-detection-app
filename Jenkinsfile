@@ -7,7 +7,7 @@ pipeline {
             
             steps {
                 sh '''
-                pip install pytest
+                pip install -r server/requirements.txt
                 python -m pytest test/test_model.py
                 '''
             }
