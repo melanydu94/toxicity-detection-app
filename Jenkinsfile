@@ -2,7 +2,14 @@ pipeline {
     agent any
 
     stages {
-
+	
+        stage('Clear Docker Images') {
+            steps {
+                sh '''
+                docker rmi -f $(docker images -aq)
+                '''
+            }
+        }
         stage('Run tests') {
             
             steps {
