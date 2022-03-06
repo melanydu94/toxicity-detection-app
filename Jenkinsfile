@@ -3,6 +3,16 @@ pipeline {
 
     stages {
 
+        stage('Run tests') {
+            
+            steps {
+                sh '''
+                python3 -m pytest test/test_model.py
+                '''
+            }
+
+        }
+
         stage('Build Docker image') {
             
             steps {
@@ -13,18 +23,7 @@ pipeline {
             }
 
         }
-        
-        stage('Run tests') {
-            
-            steps {
-                sh '''
-                source /path/to/ENV/bin/activate
-                python -m pytest test/test_model.py
-                '''
-            }
 
-        }
-        
         stage('Run Docker image') {
             
             steps {
